@@ -1,28 +1,29 @@
+//BY SWANKYNOOB, UNDER MIT LICENSE
 function InitHanna() {
   let knownWords = {
     "hello": "Hi there!",
     "how are you": "I'm doing well, thank you.",
     "what's your name": "My name is Hanna.",
-    "oi": "Olá! Tudo Bem?",
-    "sim": "Ok.",
-    "qual é seu nome?": "Meu nome é Hanna.",
-    "qual é seu artista favorito?": "Racionais MCs",
-    "que tipo de música você gosta?": "Racionais MCs",
-    "quem te criou?": "Wesley Yan Soares Brehmer, CEO/Fundador da SwankyNoob",
-    "quem te fez?": "Wesley Yan Soares Brehmer, CEO/Fundador da SwankyNoob",
-    "quem te desenvolveu?": "Wesley Yan Soares Brehmer, CEO/Fundador da SwankyNoob",
-    "quem criou você?": "Wesley Yan Soares Brehmer, CEO/Fundador da SwankyNoob",
-    "quem é seu criador?": "Wesley Yan Soares Brehmer, CEO/Fundador da SwankyNoob",
-    "quem é seu desenvolvedor?": "Wesley Yan Soares Brehmer, CEO/Fundador da SwankyNoob",
-    "qual é seu desenvolvedor?": "Wesley Yan Soares Brehmer, CEO/Fundador da SwankyNoob",
-    "que horas que é": () => {
+    "hi": "Hello, how are you?",
+    "yes": "Ok.",
+    "what is your name?": "My name is Hanna.",
+    "who is your favorite artist?": "Racionais MCs",
+    "what kind of music do you like?": "Racionais MCs",
+    "who raised you?": "Wesley Yan Soares Brehmer, CEO/Fundador da SwankyNoob",
+    "who made you?": "Wesley Yan Soares Brehmer, CEO/Fundador da SwankyNoob",
+    "who developed you?": "Wesley Yan Soares Brehmer, CEO/Fundador da SwankyNoob",
+    "who created you?": "Wesley Yan Soares Brehmer, CEO/Fundador da SwankyNoob",
+    "who is your creator?": "Wesley Yan Soares Brehmer, CEO/Fundador da SwankyNoob",
+    "who is your developer?": "Wesley Yan Soares Brehmer, CEO/Fundador da SwankyNoob",
+    "what is your developer?": "Wesley Yan Soares Brehmer, CEO/Fundador da SwankyNoob",
+    "what time is it": () => {
       let date = new Date();
-      alert(`O horário atual é ${date.toLocaleTimeString()} on ${date.toLocaleDateString()}.`);
+      alert(`It is now ${date.toLocaleTimeString()} on ${date.toLocaleDateString()}.`);
     },
-    "toque música": (song) => {
+    "play music": (song) => {
       window.open(`https://soundcloud.com/search?q=${song}`);
     },
-    "ligue o bluetooth": () => {
+    "turn on bluetooth": () => {
       // code to turn on Bluetooth
     }
   };
@@ -34,7 +35,7 @@ function InitHanna() {
 
   let input = document.createElement("input");
   input.type = "text";
-  input.placeholder = "Me pergunte algo!";
+  input.placeholder = "Ask me something!";
   document.body.appendChild(input);
 
   input.addEventListener("keydown", (event) => {
@@ -66,18 +67,18 @@ recognition.interimResults = true;
 
 let isRecording = false;
 let button = document.createElement("button");
-button.textContent = "Iniciar Gravação";
+button.textContent = "Start Recording";
 document.body.appendChild(button);
 
 button.addEventListener("click", () => {
   if (!isRecording) {
     recognition.start();
     isRecording = true;
-    button.textContent = "Parar de Gravar";
+    button.textContent = "Stop Recording";
   } else {
     recognition.stop();
     isRecording = false;
-    button.textContent = "Iniciar Recohecimento de Voz";
+    button.textContent = "Start Voice Recognition";
   }
 });
 
