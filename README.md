@@ -8,3 +8,5 @@ Read the file "CONTRIBUTING.MD" and see how to contribute to the Hanna project. 
 
 # In Development
 Hanna is still under development, and some features are still in testing. You can contribute to its development.
+
+---> ALL RIGHTS RESERVED, SWANKYNOOB INC. | ESTABLISHED AND MANAGED BY Wesley YAN Soares Brehmer
