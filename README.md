@@ -1,4 +1,4 @@
-# Hanna
+# Hudgate
 An artificial intelligence (AI) capable of answering any answer, even learning.
 If you ask her something that Hanna doesn't know, you can teach her the answer. Besides answering questions in an intelligent way, Hudgate can play songs. 
 Hudgate is still under development, and is under the MIT license.
