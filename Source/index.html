@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>Hudgate</title>
+
+    <!-- All margins and padding must be zero for the canvas to fill the screen. -->
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		html, body {
+			background: #000;
+			color: #fff;
+			overflow: hidden;
+			touch-action-delay: none;
+			touch-action: none;
+			-ms-touch-action: none;
+		}
+		canvas {
+			touch-action-delay: none;
+			touch-action: none;
+			-ms-touch-action: none;
+		}
+    </style>
+	
+
+</head> 
+ 
+<body> 
+	<div id="fb-root"></div>
+	
+	<!-- The canvas must be inside a div called c2canvasdiv -->
+	<div id="c2canvasdiv">
+	
+		<!-- The canvas the project will render to.  If you change its ID, don't forget to change the
+		ID the runtime looks for in the jQuery events above (ready() and cr_sizeCanvas()). -->
+		<canvas id="c2canvas" width="854" height="480"></canvas>
+		
+	</div>
+	
+	<!-- For node-webkit to show file dialogs -->
+	<input style="display:none;" id="c2nwOpenFileDialog" type="file" />
+	<input style="display:none;" id="c2nwChooseFolderDialog" type="file" nwdirectory />
+	<input style="display:none;" id="c2nwSaveDialog" type="file" nwsaveas />
+	
+	<!-- Pages load faster with scripts at the bottom -->
+	
+	<!-- Construct 2 exported games require jQuery. -->
+	<script src="jquery-2.1.1.min.js"></script>
+
+
+	
+    <!-- The runtime script.  You can rename it, but don't forget to rename the reference here as well.
+    This file will have been minified and obfuscated if you enabled "Minify script" during export. -->
+	<script src="c2runtime.js"></script>
+
+    <script>
+		window["c2nodewebkit"] = true;
+		
+		if (typeof nw !== "undefined")
+		{
+			window["nwgui"] = nw;						// NW.js 0.13+
+			
+			if (!window.require)
+			{
+				window.require = function (r)
+				{
+					return nw.require(r);
+				};
+			}
+		}
+		else
+		{
+			window["nwgui"] = require("nw.gui");		// NW.js 0.12.x and older
+		}
+		
+		// Uncomment to show dev tools on startup
+		//window["nwgui"].Window.get().showDevTools();
+		
+		// Start the Construct 2 project running on window load.
+		jQuery(document).ready(function ()
+		{			
+			// Create new runtime using the c2canvas
+			cr_createRuntime("c2canvas");
+			
+			window["nwgui"].Window.get().show();
+		});
+		
+		// Pause and resume on page becoming visible/invisible
+		function onVisibilityChanged() {
+			if (document.hidden || document.mozHidden || document.webkitHidden || document.msHidden)
+				cr_setSuspended(true);
+			else
+				cr_setSuspended(false);
+		};
+		
+		document.addEventListener("visibilitychange", onVisibilityChanged, false);
+		document.addEventListener("mozvisibilitychange", onVisibilityChanged, false);
+		document.addEventListener("webkitvisibilitychange", onVisibilityChanged, false);
+		document.addEventListener("msvisibilitychange", onVisibilityChanged, false);
+		
+		// Work around NWjs ghost process bug
+		var win = window['nwgui'].Window.get();
+		win.on('close', function () {
+			window['nwgui'].App.quit();
+		});
+		
+    </script>
+</body> 
+</html> 
